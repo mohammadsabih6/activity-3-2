@@ -1,3 +1,4 @@
+import BlogData from './components/BlogData';
 import BlogPosts from './components/BlogPosts';
 import NewPost from './components/NewPost';
 
@@ -9,6 +10,7 @@ function App() {
     <>
       <NewPost />
       <BlogPosts />
+      <BlogData/>
     </>
   );
 }
