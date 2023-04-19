@@ -1,26 +1,49 @@
-import { useState } from "react";
-import classes from './NewPost.module.css';
+import React, { useState } from 'react';
+import styles from './NewPost.module.css'
 
-function NewPost() {
-  const [enteredTitle, setEnteredTitle] = useState('');
+function NewPost({ setPosts }) {
+  const [newArticle, setNewArticle] = useState({ title: ''});
 
-  function updateTitleHandler(event) {
-    setEnteredTitle(event.target.value);
-  }
-
-  function submitHandler(event) {
+  const handleFormSubmit = (event) => {
     event.preventDefault();
-    // Todo: Handle the creation of new posts and send new post data to https://jsonplaceholder.typicode.com/posts (via a POST) request
-  }
 
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newArticle)
+    })
+      .then(res => res.json())
+      .then(data => {
+        setPosts(posts => [...posts, data]);
+        setNewArticle({ title: ''});
+      })
+      .catch(error => console.error(error));
+  };
+
+  const handleInputChange = (event) => {
+    setNewArticle({ ...newArticle, [event.target.name]: event.target.value });
+  };
+  
   return (
-    <form onSubmit={submitHandler} className={classes.form}>
+    <>
+    <form className={styles.title} onSubmit={handleFormSubmit}>
       <div>
-        <label>Title</label>
-        <input type="text" onChange={updateTitleHandler} value={enteredTitle} />
+        <label htmlFor="title">Title:</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          value={newArticle.title}
+          onChange={handleInputChange}
+        />
       </div>
-      <button>Save</button>
+      <button type="submit">Submit</button>
     </form>
+      <hr/>
+      <br />
+    </>
   );
 }
 

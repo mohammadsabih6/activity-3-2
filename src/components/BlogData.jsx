@@ -1,23 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react';
+import styles from './BlogData.module.css'
+import BlogPosts from './BlogPosts';
+import NewPost from './NewPost';
+
 function BlogData() {
-    const [data,setdata]=useState('');
-    useEffect(()=>{
-        fetch("https://jsonplaceholder.typicode.com/posts")
-        .then((res)=>res.json())
-        .then((data)=>{
-            setdata(data);
-        })
-    },
-    []
-    )
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then(response => response.json())
+      .then(article => setArticles(article))
+      .catch(error => console.error(error));
+  }, []);
+
   return (
-        data && data.map((data)=><div key={data.id}
-        style={{marginLeft:'40px',fontSize:'18px'}}
-        >
-                <p>Title:{data.title}</p>
-                <p>Body:{data.body}</p>
-            </div>
-        )
-  )
+    <div className={styles.BlogData}>
+      <nav><h1>Blog Posts</h1><h6>By Umair and Sabeeh</h6></nav>
+      <NewPost setPosts={setArticles} />
+      <BlogPosts posts={articles} />
+    </div>
+  );
 }
-export default BlogData
+
+export default BlogData;

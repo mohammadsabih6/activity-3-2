@@ -1,21 +1,21 @@
-.form {
+form {
   width: 20rem;
   margin: 2rem auto;
   padding: 1rem;
   list-style: none;
-  background-color: #586469;
+  background-color: #2E2E2E;
   border-radius: 6px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 4px 2px 8px #000000;
 }
 
-.form label {
+label {
   display: block;
   font-weight: bold;
-  color: white;
+  color: #B882FC;
   margin-bottom: 0.5rem;
 }
 
-.form input {
+input {
   display: block;
   width: 100%;
   border-radius: 2px;
@@ -23,12 +23,21 @@
   margin-bottom: 0.5rem;
   padding: 0.25rem;
   font: inherit;
+  background-color: #474747;
+  color: white;
 }
 
-.form button {
-  padding: 0.25rem 1rem;
-  background-color: #a4b3e9;
+button {
+  display: flex;
+  align-items: center;
+  margin: .2rem auto;
+  padding: .4rem;
+  background-color: #18E0C9;
   border: none;
-  border-radius: 2px;
+  border-radius: .2rem;
   cursor: pointer;
+}
+
+button:active {
+  background-color: #14b4a2;
 }
