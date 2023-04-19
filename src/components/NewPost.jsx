@@ -19,7 +19,6 @@ function NewPost({ setPosts }) {
         setPosts(posts => [...posts, data]);
         setNewArticle({ title: ''});
       })
-      .catch(error => console.error(error));
   };
 
   const handleInputChange = (event) => {
@@ -33,7 +32,7 @@ function NewPost({ setPosts }) {
         <label htmlFor="title">Title:</label>
         <input
           type="text"
-          id="title"
+          userId="title"
           name="title"
           value={newArticle.title}
           onChange={handleInputChange}

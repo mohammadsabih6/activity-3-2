@@ -10,7 +10,6 @@ function BlogData() {
     fetch('https://jsonplaceholder.typicode.com/posts')
       .then(response => response.json())
       .then(article => setArticles(article))
-      .catch(error => console.error(error));
   }, []);
 
   return (
