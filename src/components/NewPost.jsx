@@ -4,6 +4,7 @@ import styles from './NewPost.module.css'
 function NewPost({ setPosts }) {
   const [newArticle, setNewArticle] = useState({ title: ''});
 
+  
   const handleFormSubmit = (event) => {
     event.preventDefault();
 

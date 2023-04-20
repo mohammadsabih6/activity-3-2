@@ -4,7 +4,7 @@ import styles from './BlogPosts.module.css'
 function BlogPosts({ posts }) {
   return (
     <ul className='allPosts'>
-      {posts.map(post => (
+      {posts.map(post =>  (
         <li key={post.id} className={styles.title}>{post.title}</li>
       ))}
     </ul>
